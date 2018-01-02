@@ -6,7 +6,6 @@ angular.module('JWTDemoApp')
 	var init = function() {
 		$http.get('api/users').success(function(res) {
 			$scope.users = res;
-			
 			$scope.userForm.$setPristine();
 			$scope.message='';
 			$scope.appUser = null;

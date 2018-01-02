@@ -22,10 +22,12 @@ angular.module('JWTDemoApp', [ 'ui.router' ])
 			if (toState.data && toState.data.role) {
 				var hasAccess = false;
 				var resp = AuthService.user.roles;
-				var objs=JSON.parse(resp);
-				for (var i = 0; i < objs.length; i++) {
+				if (typeof resp === 'string') {
+					resp=JSON.parse(resp);
+				}
+				for (var i = 0; i < resp.length; i++) {
 					//var role = AuthService.user.roles[i];
-					var role = objs[i].role;
+					var role = resp[i].role;
 						
 					if (toState.data.role == role) {
 						hasAccess = true;
