@@ -1,12 +1,12 @@
 package com.designmt.project.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -19,6 +19,8 @@ public class UserRole {
 	private Long id;
 	@Column(name = "role")
 	private String role;
+	
+	
 	@Column(name = "user_id")
 	private long user_id;
 	
@@ -35,6 +37,8 @@ public class UserRole {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+
 	@JsonIgnore
 	public long getUser_id() {
 		return user_id;
@@ -42,7 +46,6 @@ public class UserRole {
 	public void setUser_id(long user_id) {
 		this.user_id = user_id;
 	}
-	
 	@Override
 	public String toString()
 	{

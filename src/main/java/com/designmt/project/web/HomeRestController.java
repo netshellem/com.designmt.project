@@ -79,11 +79,15 @@ public class HomeRestController {
 	public ResponseEntity<Map<String, Object>> login(@RequestParam String username, @RequestParam String password,
 			HttpServletResponse response) throws IOException {
 		String token = null;
-
+		System.out.println("user name  :///// "+ username);
 		AppUser appUser = appUserRepository.findOneByUsername(username);
+		if(appUser == null)
+		{
+			System.out.println("find user failed :///// ");
+		}
 		Map<String, Object> tokenMap = new HashMap<String, Object>();
-
-		System.out.println("roles : "+ appUser.getRoles());
+		//System.out.println("user id  : "+ appUser.getId());
+		//System.out.println("roles : "+ appUser.getRoles());b
 		if (appUser != null && appUser.getPassword().equals(password)) {
 			ArrayList<String> wrd = new ArrayList<String>(); 
 			for(UserRole role : appUser.getRoles())

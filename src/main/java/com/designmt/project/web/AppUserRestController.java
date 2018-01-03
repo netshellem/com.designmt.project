@@ -15,14 +15,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.designmt.project.model.AppUser;
+import com.designmt.project.model.UserRole;
 import com.designmt.project.repository.AppUserRepository;
-
+import com.designmt.project.repository.UserRoleRepository;
 
 @RestController
 @RequestMapping(value = "/api")
 public class AppUserRestController {
 	@Autowired
 	private AppUserRepository appUserRepository;
+
 
 	/**
 	 * Web service for getting all the appUsers in the application.
@@ -108,4 +110,3 @@ public class AppUserRestController {
 	}
 
 }
-

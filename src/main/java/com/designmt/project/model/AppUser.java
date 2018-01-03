@@ -14,9 +14,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -49,11 +52,10 @@ public class AppUser  implements UserDetails{
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 	
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "Id")
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user_id", orphanRemoval = true)
     private List<UserRole> roles;
 
-
+    
     public List<UserRole> getRoles() {
 		return roles;
 	}
